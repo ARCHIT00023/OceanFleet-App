@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * UC-1 & UC-2 Implementation
  * UC-1: Create Vessel Model
  * UC-2: Store Vessel Records Using List
+ * UC-3: Retrieve Vessel by Vessel ID
  */
 public class Application {
 
@@ -18,11 +18,9 @@ public class Application {
         private double averageSpeed;
         private String vesselType;
 
-        // No-argument constructor
         public Vessel() {
         }
 
-        // Parameterized constructor
         public Vessel(String vesselId, String vesselName, double averageSpeed, String vesselType) {
             this.vesselId = vesselId;
             this.vesselName = vesselName;
@@ -64,48 +62,16 @@ public class Application {
     }
 
     /* =======================
-       UC-2: VesselUtil Class
+       UC-2 & UC-3: VesselUtil
        ======================= */
     static class VesselUtil {
 
-        // List to store vessel records
         private List<Vessel> vesselList = new ArrayList<>();
 
-        // Add vessel to the list
+        // UC-2: Add vessel
         public void addVesselPerformance(Vessel vessel) {
             vesselList.add(vessel);
         }
 
-        // Display all vessels (for verification)
-        public void displayVessels() {
-            for (Vessel vessel : vesselList) {
-                System.out.println(
-                        vessel.getVesselId() + " | " +
-                        vessel.getVesselName() + " | " +
-                        vessel.getAverageSpeed() + " | " +
-                        vessel.getVesselType()
-                );
-            }
-        }
-    }
-
-    /* =======================
-       Main Method (User Flow)
-       ======================= */
-    public static void main(String[] args) {
-
-        VesselUtil vesselUtil = new VesselUtil();
-
-        // User enters vessel details
-        Vessel v1 = new Vessel("V001", "Ocean Explorer", 28.5, "Cargo");
-        Vessel v2 = new Vessel("V002", "Sea Guardian", 32.0, "Defense");
-
-        // Store vessel records
-        vesselUtil.addVesselPerformance(v1);
-        vesselUtil.addVesselPerformance(v2);
-
-        // Display stored vessels
-        System.out.println("Stored Vessel Records:");
-        vesselUtil.displayVessels();
-    }
-}
+        // UC-3: Retrieve vessel by ID (case-sensitive)
+        public Vessel getVesselById(String ves
